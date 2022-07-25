@@ -24,4 +24,9 @@ CREATE TABLE user_courses (
     course_id INT NOT NULL,
     FOREIGN KEY(user_id) REFERENCES users(id),
     FOREIGN KEY(course_id) REFERENCES courses(id)
-)
+);
+
+INSERT INTO courses
+VALUES (0, "Genetics", "Biology", "4 weeks", 200.00, "Prof. Bob");
+
+SELECT * FROM courses;

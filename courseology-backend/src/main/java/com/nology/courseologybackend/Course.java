@@ -22,8 +22,8 @@ public class Course {
 
     public Course() {}
 
-    public Course(String id, String course_name, String subject, String duration, Double price, String tutor) {
-        this.id = id;
+    public Course(String course_name, String subject, String duration, Double price, String tutor) {
+        super();
         this.course_name = course_name;
         this.subject = subject;
         this.duration = duration;
