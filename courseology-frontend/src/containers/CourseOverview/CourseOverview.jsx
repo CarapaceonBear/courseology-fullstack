@@ -1,9 +1,12 @@
 import React from "react";
 import "./CourseOverview.scss";
+import Navbar from "../../components/Navbar/Navbar";
 
 const CourseOverview = () => {
   return (
-    <div>CourseOverview</div>
+    <div>
+      <Navbar />
+    </div>
   )
 }
 

@@ -1,0 +1,9 @@
+@use "../../assets/sass/variables" as *;
+
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 1rem;
+
+    background-color: $color-light;
+}

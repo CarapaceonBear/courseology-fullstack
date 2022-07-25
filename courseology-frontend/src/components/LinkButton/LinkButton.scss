@@ -1,0 +1,42 @@
+@use "../../assets/sass/variables" as *;
+
+@keyframes jumpUp {
+    0% {
+        transform: translateY(0%) scaleX(100%) scaleY(100%);
+    }
+    20% {
+        transform: translateY(-20%) scaleX(95%) scaleY(105%);
+    }
+    40% {
+        transform: translateY(-30%) scaleX(95%) scaleY(105%);
+    }
+    60% {
+        transform: translateY(-30%) scaleX(105%) scaleY(95%);
+    }
+    70% {
+        transform: translateY(-25%) scaleX(98%) scaleY(102%);
+    }
+    100% {
+        transform: translateY(-20%) scaleX(100%) scaleY(100%);
+    }
+}
+
+.link-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: $color-black;
+    font-size: 2rem;
+    height: 5rem;
+    width: 18rem;
+    transition: transform 0.2s ease-out;
+
+    &:hover {
+        animation: 0.5s linear jumpUp;
+        transform: translateY(-20%);
+    }
+}
+a {
+    text-decoration: none;
+}
