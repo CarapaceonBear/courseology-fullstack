@@ -1,1 +1,53 @@
 @use "../../assets/sass/variables" as *;
+
+.course-container {
+    display: flex;
+    justify-content: center;
+}
+.course-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(4, 3rem);
+    grid-template-areas:
+    "one four"
+    "one five"
+    "two six"
+    "three seven";
+    margin-top: 2rem;
+    padding: 1rem;
+    border-radius: 1rem;
+
+
+
+    background-color: $color-light;
+
+    &__name {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $color-mid;
+        margin: -1rem 1rem 1rem -1rem;
+        border-radius: 1rem 0; 
+        grid-area: one;
+    }
+    &__id {
+        grid-area: five;
+        font-size: 0.8rem;
+    }
+    &__info {
+        margin: 0;
+        height: 2rem;
+        &--subject {
+            grid-area: two;
+        }
+        &--duration {
+            grid-area: three;
+        }
+        &--price {
+            grid-area: six;
+        }
+        &--tutor {
+            grid-area: seven;
+        }
+    }
+}
