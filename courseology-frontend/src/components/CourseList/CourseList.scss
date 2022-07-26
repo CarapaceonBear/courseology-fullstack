@@ -1,0 +1,9 @@
+@use "../../assets/sass/variables" as *;
+
+.course-list {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 4rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+}

@@ -1,1 +1,6 @@
 @use "./assets/sass/variables" as *;
+
+.App {
+    background-color: $color-white;
+    height: 100vh;
+}

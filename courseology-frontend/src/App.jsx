@@ -8,15 +8,17 @@ import UserProfile from './containers/UserProfile/UserProfile';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Splash />} />
-        <Route path="/browse" element={<BrowseCourses />} />
-        <Route path="/course/:courseId" element={<CourseOverview />} />
-        <Route path="/login" element={<SignIn />} />
-        <Route path="/profile/:userId" element={<UserProfile />} />
-      </Routes>
-    </Router>
+    <div className="App">
+      <Router>
+        <Routes>
+          <Route path="/" element={<Splash />} />
+          <Route path="/browse" element={<BrowseCourses />} />
+          <Route path="/course/:courseId" element={<CourseOverview />} />
+          <Route path="/login" element={<SignIn />} />
+          <Route path="/profile/:userId" element={<UserProfile />} />
+        </Routes>
+      </Router>
+    </div>
   );
 };
 
