@@ -5,6 +5,7 @@ import BrowseCourses from "./containers/BrowseCourses/BrowseCourses";
 import CourseOverview from './containers/CourseOverview/CourseOverview';
 import SignIn from "./containers/SignIn/SignIn";
 import UserProfile from './containers/UserProfile/UserProfile';
+import Admin from "./containers/Admin/Admin";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/course/:courseId" element={<CourseOverview />} />
           <Route path="/login" element={<SignIn />} />
           <Route path="/profile/:userId" element={<UserProfile />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
       </Router>
     </div>

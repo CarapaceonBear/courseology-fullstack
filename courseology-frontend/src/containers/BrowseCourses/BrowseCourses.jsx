@@ -20,9 +20,12 @@ const BrowseCourses = () => {
   }
 
   return (
-    <div>
+    <div className="browse">
       <Navbar />
-      <CourseList courses={courses} />
+      <div className="browse__container">
+        <h1 className="browse__title">Our available courses</h1>
+        <CourseList courses={courses} />
+      </div>
     </div>
   )
 }

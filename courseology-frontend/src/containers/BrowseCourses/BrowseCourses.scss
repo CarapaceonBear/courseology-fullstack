@@ -1,1 +1,12 @@
 @use "../../assets/sass/variables" as *;
+
+.browse {
+    &__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &__title {
+        font-size: 3rem;
+    }
+}
