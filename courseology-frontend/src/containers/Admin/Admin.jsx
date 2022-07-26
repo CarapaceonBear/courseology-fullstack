@@ -5,15 +5,52 @@ import Navbar from "../../components/Navbar/Navbar";
 const Admin = () => {
 
     const submitDelete = (event) => {
-        event.preventDefault()
-        console.log(event.nativeEvent.srcElement[0].value);
+        event.preventDefault();
         const submittedId = event.nativeEvent.srcElement[0].value;
-        sendDeleteRequest(submittedId)
+        sendDeleteRequest(submittedId);
+        event.target.reset();
     }
 
     const sendDeleteRequest = async (id) => {
         const url = `http://localhost:8080/remove/${id}`
-        await fetch(url, {method: "DELETE"});
+        const response = await fetch(url, {method: "DELETE"});
+        const message = await response.text();
+        alert(message);
+    }
+
+    const submitCreate = (event) => {
+        event.preventDefault();
+        const name = event.nativeEvent.srcElement[0].value;
+        const subject = event.nativeEvent.srcElement[1].value;
+        const duration = event.nativeEvent.srcElement[2].value;
+        const price = event.nativeEvent.srcElement[3].value;
+        const tutor = event.nativeEvent.srcElement[4].value;
+        const submittedCourse = {
+            "course_name":name,
+            "subject":subject,
+            "duration":duration,
+            "price":parseFloat(price),
+            "tutor":tutor
+        }
+        if (name != "" && subject != "" && duration != "" && price != "" && tutor != "") {
+            sendCreateRequest(submittedCourse);
+            event.target.reset();
+        } else {
+            alert("Missing information")
+        }
+    }
+
+    const sendCreateRequest = async (course) => {
+        const url = "http://localhost:8080/add";
+        const response = await fetch(url, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(course)
+        });
+        const message = await response.text();
+        alert(message);
     }
 
   return (
@@ -27,7 +64,7 @@ const Admin = () => {
                 <input type="text" id="delete-box" />
                 <input className="admin__button" type="submit" id="delete-button" value="Confirm Delete" />
             </form>
-            <form className="admin__form admin__form--create">
+            <form className="admin__form admin__form--create" onSubmit={submitCreate}>
                 <h2>Add course:</h2>
                 <label htmlFor="name-box">Name</label>
                 <input type="text" id="name-box" />
