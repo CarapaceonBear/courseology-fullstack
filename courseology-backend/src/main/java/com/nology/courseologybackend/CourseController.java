@@ -48,9 +48,9 @@ public class CourseController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<String> updateCourse(@RequestBody Course newCourse, @PathVariable String id) {
+    public ResponseEntity<String> updateCourse(@RequestBody List<String> newCourse, @PathVariable String id) {
         courseService.updateCourse(newCourse, id);
-        return ResponseEntity.status(HttpStatus.OK).body(String.format("Greeting with ID:%s updated", id));
+        return ResponseEntity.status(HttpStatus.OK).body(String.format("Course with ID:%s updated", id));
     }
 
     @DeleteMapping("/remove/{id}")

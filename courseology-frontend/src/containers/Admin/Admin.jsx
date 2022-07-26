@@ -12,7 +12,7 @@ const Admin = () => {
     }
 
     const sendDeleteRequest = async (id) => {
-        const url = `http://localhost:8080/remove/${id}`
+        const url = `http://localhost:8080/remove/${id}`;
         const response = await fetch(url, {method: "DELETE"});
         const message = await response.text();
         alert(message);
@@ -32,7 +32,7 @@ const Admin = () => {
             "price":parseFloat(price),
             "tutor":tutor
         }
-        if (name != "" && subject != "" && duration != "" && price != "" && tutor != "") {
+        if (name !== "" && subject !== "" && duration !== "" && price !== "" && tutor !== "") {
             sendCreateRequest(submittedCourse);
             event.target.reset();
         } else {
@@ -44,6 +44,36 @@ const Admin = () => {
         const url = "http://localhost:8080/add";
         const response = await fetch(url, {
             method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(course)
+        });
+        const message = await response.text();
+        alert(message);
+    }
+
+    const submitUpdate = (event) => {
+        event.preventDefault();
+        const submittedId = event.nativeEvent.srcElement[0].value;
+        const name = event.nativeEvent.srcElement[1].value;
+        const subject = event.nativeEvent.srcElement[2].value;
+        const duration = event.nativeEvent.srcElement[3].value;
+        const price = event.nativeEvent.srcElement[4].value;
+        const tutor = event.nativeEvent.srcElement[5].value;
+        const submittedCourse = [name, subject, duration, price, tutor];
+        if (name !== "" && subject !== "" && duration !== "" && price !== "" && tutor !== "") {
+            alert("No new information")
+        } else {
+            sendUpdateRequest(submittedId, submittedCourse);
+            event.target.reset();
+        }
+    }
+
+    const sendUpdateRequest = async (id, course) => {
+        const url = `http://localhost:8080/update/${id}`;
+        const response = await fetch(url, {
+            method: "PUT",
             headers: {
                 "Content-Type": "application/json",
             },
@@ -66,17 +96,33 @@ const Admin = () => {
             </form>
             <form className="admin__form admin__form--create" onSubmit={submitCreate}>
                 <h2>Add course:</h2>
-                <label htmlFor="name-box">Name</label>
-                <input type="text" id="name-box" />
-                <label htmlFor="subject-box">Subject</label>
-                <input type="text" id="subject-box" />
-                <label htmlFor="duration-box">Duration</label>
-                <input type="text" id="duration-box" />
-                <label htmlFor="price-box">Price (number only)</label>
-                <input type="text" id="price-box" />
-                <label htmlFor="tutor-box">Tutor</label>
-                <input type="text" id="tutor-box" />
+                <label htmlFor="create-name-box">Name</label>
+                <input type="text" id="create-name-box" />
+                <label htmlFor="create-subject-box">Subject</label>
+                <input type="text" id="create-subject-box" />
+                <label htmlFor="create-duration-box">Duration</label>
+                <input type="text" id="create-duration-box" />
+                <label htmlFor="create-price-box">Price (number only)</label>
+                <input type="text" id="create-price-box" />
+                <label htmlFor="create-tutor-box">Tutor</label>
+                <input type="text" id="create-tutor-box" />
                 <input className="admin__button" type="submit" id="create-button" value="Confirm Add" />
+            </form>
+            <form className="admin__form admin__form--update" onSubmit={submitUpdate}>
+                <h2>Update course:</h2>
+                <label htmlFor="update-id-box">Course ID</label>
+                <input type="text" id="update-id-box" />
+                <label htmlFor="update-name-box">Name</label>
+                <input type="text" id="update-name-box" />
+                <label htmlFor="update-subject-box">Subject</label>
+                <input type="text" id="update-subject-box" />
+                <label htmlFor="update-duration-box">Duration</label>
+                <input type="text" id="update-duration-box" />
+                <label htmlFor="update-price-box">Price (number only)</label>
+                <input type="text" id="update-price-box" />
+                <label htmlFor="update-tutor-box">Tutor</label>
+                <input type="text" id="update-tutor-box" />
+                <input className="admin__button" type="submit" id="update-button" value="Confirm Update" />
             </form>
         </div>
     </div>

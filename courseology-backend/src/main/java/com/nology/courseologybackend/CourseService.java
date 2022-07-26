@@ -28,9 +28,25 @@ public class CourseService {
         return courseRepository.save(course);
     }
 
-    public void updateCourse(Course newCourse, String id) {
+    public void updateCourse(List<String> newCourse, String id) {
+        Course oldCourse = readCourseById(id);
+        if (! newCourse.get(0).equals("")) {
+            oldCourse.setCourse_name(newCourse.get(0));
+        }
+        if (! newCourse.get(1).equals("")) {
+            oldCourse.setSubject(newCourse.get(1));
+        }
+        if (! newCourse.get(2).equals("")) {
+            oldCourse.setDuration(newCourse.get(2));
+        }
+        if (! newCourse.get(3).equals("")) {
+            oldCourse.setPrice(Double.parseDouble(newCourse.get(3)));
+        }
+        if (! newCourse.get(4).equals("")) {
+            oldCourse.setTutor(newCourse.get(4));
+        }
         courseRepository.deleteById(id);
-        courseRepository.save(newCourse);
+        courseRepository.save(oldCourse);
 //        courseRepository.updateById(newCourse, id);
     }
 
