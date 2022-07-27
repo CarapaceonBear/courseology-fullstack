@@ -23,6 +23,7 @@
             width: 100%;
             padding: 1rem 0 0.6rem 0;
             height: 3rem;
+            transition: all 0.2s;
         }
         &--subject {
             margin-top: 1rem;
@@ -32,13 +33,10 @@
             font-size: 1rem;
         }
     }
-    border: 0px solid $color-accent;
-    margin: 5px;
-    transition: all 0.2s;
 
-    &:hover {
-        border: 5px solid $color-accent;
-        margin: 0;
+    &:hover .card__text--name {
+        color: $color-black;
+        background-color: $color-accent;
     }
 
 }

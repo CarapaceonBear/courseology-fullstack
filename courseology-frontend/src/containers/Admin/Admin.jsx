@@ -1,6 +1,7 @@
 import React from "react";
 import "./Admin.scss";
 import Navbar from "../../components/Navbar/Navbar";
+import ScreenWipe from "../../components/ScreenWipe/ScreenWipe";
 
 const Admin = () => {
 
@@ -62,7 +63,7 @@ const Admin = () => {
         const price = event.nativeEvent.srcElement[4].value;
         const tutor = event.nativeEvent.srcElement[5].value;
         const submittedCourse = [name, subject, duration, price, tutor];
-        if (name !== "" && subject !== "" && duration !== "" && price !== "" && tutor !== "") {
+        if (name === "" && subject === "" && duration === "" && price === "" && tutor === "") {
             alert("No new information")
         } else {
             sendUpdateRequest(submittedId, submittedCourse);
@@ -86,6 +87,7 @@ const Admin = () => {
   return (
     <div className="admin">
         <Navbar />
+        <ScreenWipe />
         <h1 className="admin__title">Admin</h1>
         <div className="admin__container">
             <form className="admin__form admin__form--delete" onSubmit={submitDelete}>

@@ -1,1 +1,14 @@
 @use "../../assets/sass/variables" as *;
+
+.splash {
+    background-color: $color-light;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    &__title {
+        font-size: 4rem;
+    }
+}

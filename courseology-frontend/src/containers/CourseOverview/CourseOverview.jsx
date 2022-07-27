@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./CourseOverview.scss";
 import Navbar from "../../components/Navbar/Navbar";
+import ScreenWipe from "../../components/ScreenWipe/ScreenWipe";
 import { useParams } from "react-router-dom";
 
 const CourseOverview = () => {
@@ -23,6 +24,7 @@ const CourseOverview = () => {
   return (
     <div className="course">
       <Navbar />
+      <ScreenWipe />
       <div className="course-container">
         <div className="course-details">
           <h1 className="course-details__name">{courseData.course_name}</h1>
