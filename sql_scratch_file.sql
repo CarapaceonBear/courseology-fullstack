@@ -29,4 +29,6 @@ CREATE TABLE user_courses (
 INSERT INTO courses
 VALUES (0, "Genetics", "Biology", "4 weeks", 200.00, "Prof. Bob");
 
-SELECT * FROM courses;
+SELECT * FROM course;
+
+SELECT DISTINCT subject FROM course;

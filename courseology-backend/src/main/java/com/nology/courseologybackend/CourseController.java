@@ -57,6 +57,12 @@ public class CourseController {
         return ResponseEntity.status(HttpStatus.FOUND).body(sublist);
     }
 
+    @GetMapping("/subjects")
+    public ResponseEntity<List<String>> getSubjects() {
+        List<String> responses = courseService.readSubjects();
+        return ResponseEntity.status(HttpStatus.FOUND).body(responses);
+    }
+
     @PostMapping("/add")
     public ResponseEntity<String> addCourse(@RequestBody Course course) {
         Course response = courseService.saveCourse(course);

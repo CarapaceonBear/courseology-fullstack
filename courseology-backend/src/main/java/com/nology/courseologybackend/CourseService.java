@@ -28,6 +28,10 @@ public class CourseService {
         return courseRepository.findAllBySubject(subject);
     }
 
+    public List<String> readSubjects() {
+        return courseRepository.findDistinctSubject();
+    }
+
     public Course saveCourse(Course course) {
         return courseRepository.save(course);
     }

@@ -1,6 +1,7 @@
 package com.nology.courseologybackend;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -15,7 +16,8 @@ public interface CourseRepository extends JpaRepository<Course, String> {
 
     List<Course> findAllBySubject(String subject);
 
-//    void save(Course course);
+    @Query(value="SELECT DISTINCT subject FROM course", nativeQuery = true)
+    List<String> findDistinctSubject();
 
     void delete(Course course);
 }

@@ -18,13 +18,12 @@ const BrowseCourses = () => {
 
   const getCourses = async (page) => {
     let url = "";
-    let request = null;
     if (filter === "none") {
       url = `http://localhost:8080/courses/${page}`;
     } else {
       url = `http://localhost:8080/filter/${filter}/${page}` ;
     }
-    request = await fetch(url);
+    let request = await fetch(url);
     let result = await request.json();
     return result;
   }
@@ -41,6 +40,9 @@ const BrowseCourses = () => {
   }
 
   const changeFilter = (event) => {
+    if (event.target.value !== "none") {
+      setPage(1);
+    }
     setFilter(event.target.value);
   }
 
