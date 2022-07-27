@@ -7,24 +7,13 @@
 
     background-color: $color-mid;
     border-radius: 20px;
-    width: 12rem;
+    width: 18rem;
     height: 10rem;
 
     &__text {
         margin: 0;
         height: 2rem;
 
-        &--name {
-            font-size: 2rem;
-            text-align: center;
-            color: white;
-            background-color: $color-dark;
-            border-radius: 15px 15px 0 0;
-            width: 100%;
-            padding: 1rem 0 0.6rem 0;
-            height: 3rem;
-            transition: all 0.2s;
-        }
         &--subject {
             margin-top: 1rem;
             font-size: 1.2rem;
@@ -33,8 +22,24 @@
             font-size: 1rem;
         }
     }
+    &__name {
+        font-size: 2rem;
+        text-align: center;
+        color: white;
+        background-color: $color-dark;
+        border-radius: 15px 15px 0 0;
+        width: 100%;
+        padding: 1rem 0 0.6rem 0;
+        height: 3rem;
+        transition: all 0.2s;
 
-    &:hover .card__text--name {
+        &--long {
+            font-size: 1.4rem;
+            padding: 1.4rem 0 0.2rem 0;
+        }
+    }
+
+    &:hover .card__name {
         color: $color-black;
         background-color: $color-accent;
     }

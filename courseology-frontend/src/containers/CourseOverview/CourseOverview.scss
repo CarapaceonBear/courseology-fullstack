@@ -29,6 +29,10 @@
         margin: -1rem 1rem 1rem -1rem;
         border-radius: 1rem 0; 
         grid-area: one;
+
+        &--long {
+            font-size: 1.4rem;
+        }
     }
     &__id {
         grid-area: five;

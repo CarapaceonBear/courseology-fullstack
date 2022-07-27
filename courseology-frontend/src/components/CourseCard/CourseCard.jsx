@@ -9,7 +9,10 @@ const CourseCard = ( {cardData} ) => {
   return (
     <Link to={`/course/${id}`}>
       <div className="card">
-          <h2 className="card__text card__text--name">{course_name}</h2>
+          {course_name.length > 15 ? 
+            <h2 className="card__text card__name card__name--long">{course_name}</h2>
+            : <h2 className="card__text card__name">{course_name}</h2>
+          }
           <h3 className="card__text card__text--subject">{subject}</h3>
           <h3 className="card__text card__text--duration">{duration}</h3>
       </div>
