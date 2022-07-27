@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Course {
+public class Course implements Comparable<Course> {
 
     @Id
     @GeneratedValue(generator = "system-uuid")
@@ -29,6 +29,11 @@ public class Course {
         this.duration = duration;
         this.price = price;
         this.tutor = tutor;
+    }
+
+    @Override
+    public int compareTo(Course course) {
+        return this.course_name.compareTo(course.getCourse_name());
     }
 
     public String getId() {
@@ -72,4 +77,5 @@ public class Course {
     public void setTutor(String tutor) {
         this.tutor = tutor;
     }
+
 }

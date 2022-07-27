@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -29,6 +30,7 @@ public class CourseController {
     @GetMapping("/courses/{page}")
     public ResponseEntity<List<Course>> getAllCourses(@PathVariable int page) {
         List<Course> responses = courseService.readAllCourses();
+        Collections.sort(responses);
         int upperBound = page * 10;
         if ((page - 1) * 10 > responses.size()) {
             throw new ArrayIndexOutOfBoundsException();
