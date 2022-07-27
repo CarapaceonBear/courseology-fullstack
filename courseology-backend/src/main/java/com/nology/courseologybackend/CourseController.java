@@ -39,7 +39,21 @@ public class CourseController {
             upperBound = responses.size();
         }
         List<Course> sublist = responses.subList((page - 1) * 10, upperBound);
-        sublist.forEach(e -> System.out.println(e.getCourse_name()));
+        return ResponseEntity.status(HttpStatus.FOUND).body(sublist);
+    }
+
+    @GetMapping("/filter/{subject}/{page}")
+    public ResponseEntity<List<Course>> getAllBySubject(@PathVariable String subject, @PathVariable int page) {
+        List<Course> responses = courseService.readAllBySubject(subject);
+        Collections.sort(responses);
+        int upperBound = page * 10;
+        if ((page - 1) * 10 > responses.size()) {
+            throw new ArrayIndexOutOfBoundsException();
+        }
+        if (upperBound > responses.size()) {
+            upperBound = responses.size();
+        }
+        List<Course> sublist = responses.subList((page - 1) * 10, upperBound);
         return ResponseEntity.status(HttpStatus.FOUND).body(sublist);
     }
 

@@ -38,7 +38,7 @@ const CourseOverview = () => {
             <h3 className="course-details__info course-details__info--price">Fees: £{courseData.price}</h3>
             <h3 className="course-details__info course-details__info--tutor">Course tutor: {courseData.tutor}</h3>
           </div>
-          : <p>Lading information</p>
+          : <p>Loading information</p>
         }
 
 

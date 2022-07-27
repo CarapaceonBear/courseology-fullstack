@@ -4,19 +4,27 @@ import Navbar from "../../components/Navbar/Navbar";
 import CourseList from "../../components/CourseList/CourseList";
 import ScreenWipe from "../../components/ScreenWipe/ScreenWipe";
 import PageButton from "../../components/PageButton/PageButton";
+import SubjectFilter from "../../components/SubjectFilter/SubjectFilter";
 
 const BrowseCourses = () => {
 
   const [courses, setCourses] = useState([]);
   const [page, setPage] = useState(1);
+  const [filter, setFilter] = useState("none");
 
   useEffect(() => {
     getCourses(page).then(items => setCourses(items))
-  }, [page])
+  }, [page, filter])
 
   const getCourses = async (page) => {
-    let url = `http://localhost:8080/courses/${page}`;
-    let request = await fetch(url);
+    let url = "";
+    let request = null;
+    if (filter === "none") {
+      url = `http://localhost:8080/courses/${page}`;
+    } else {
+      url = `http://localhost:8080/filter/${filter}/${page}` ;
+    }
+    request = await fetch(url);
     let result = await request.json();
     return result;
   }
@@ -32,12 +40,17 @@ const BrowseCourses = () => {
     }
   }
 
+  const changeFilter = (event) => {
+    setFilter(event.target.value);
+  }
+
   return (
     <div className="browse">
       <Navbar />
       <ScreenWipe />
       <div className="browse__container">
         <h1 className="browse__title">Our available courses</h1>
+        <SubjectFilter onChange={changeFilter} />
         <CourseList courses={courses} />
         <div className="browse__page-nav">
           {page > 1 ? 

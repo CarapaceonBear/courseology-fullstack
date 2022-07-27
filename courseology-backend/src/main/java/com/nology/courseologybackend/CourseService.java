@@ -24,6 +24,10 @@ public class CourseService {
         return courseRepository.findAll();
     }
 
+    public List<Course> readAllBySubject(String subject) {
+        return courseRepository.findAllBySubject(subject);
+    }
+
     public Course saveCourse(Course course) {
         return courseRepository.save(course);
     }
@@ -47,7 +51,6 @@ public class CourseService {
         }
         courseRepository.deleteById(id);
         courseRepository.save(oldCourse);
-//        courseRepository.updateById(newCourse, id);
     }
 
     public void deleteCourseById(String id) {

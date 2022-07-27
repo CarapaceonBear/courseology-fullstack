@@ -13,6 +13,8 @@ public interface CourseRepository extends JpaRepository<Course, String> {
 
     List<Course> findAll();
 
+    List<Course> findAllBySubject(String subject);
+
 //    void save(Course course);
 
     void delete(Course course);
