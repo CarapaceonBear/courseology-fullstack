@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import "./App.scss";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Splash from "./containers/Splash/Splash";
@@ -8,6 +9,9 @@ import UserProfile from './containers/UserProfile/UserProfile';
 import Admin from "./containers/Admin/Admin";
 
 function App() {
+
+  const [user, setUser] = useState(null);
+
   return (
     <div className="App">
       <Router>
