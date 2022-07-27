@@ -44,7 +44,6 @@ const SignIn = ({changeUser}) => {
     const username = event.nativeEvent.srcElement[0].value;
     const password = event.nativeEvent.srcElement[1].value;
     const validLogin = checkLogin(username, password);
-    console.log(validLogin);
     if (validLogin !== null) {
       changeUser(validLogin)
     } else {

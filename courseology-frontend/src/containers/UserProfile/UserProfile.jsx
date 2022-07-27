@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import "./UserProfile.scss";
 import Navbar from "../../components/Navbar/Navbar";
 import ScreenWipe from "../../components/ScreenWipe/ScreenWipe";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
-const UserProfile = ({ user }) => {
-
+const UserProfile = ({ user, logOut }) => {
+  
+  const navigate = useNavigate();
   const { userId } = useParams();
-
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
@@ -46,6 +46,11 @@ const UserProfile = ({ user }) => {
     alert(message);
   }
 
+  const triggerLogOut = () => {
+    logOut();
+    navigate("/");
+  }
+
   return (
     <div className="profile">
       <Navbar user={user} />
@@ -62,6 +67,7 @@ const UserProfile = ({ user }) => {
               <input type="password" id="password-box" />
               <input className="password__button" type="submit" id="password-button" value="Confirm Change" />
             </form>
+            <button className="log-out-button" onClick={triggerLogOut}>Log Out</button>
           </>
           : <p>Loading information</p>
         }

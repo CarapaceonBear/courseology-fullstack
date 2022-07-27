@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 2rem;
 }
 .user-details {
     background-color: $color-light;
@@ -18,7 +19,6 @@
         background-color: $color-light;
         padding: 2rem;
         border-radius: 1rem;
-        margin-top: 2rem;
     }
     &__button {
         margin-top: 1rem;
@@ -32,5 +32,18 @@
             background-color: $color-accent;
             color: $color-black;
         }
+    }
+}
+.log-out-button {
+    font-size: 2rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: $color-dark;
+    color: $color-white;
+    transition: all 0.2s;
+
+    &:hover {
+        background-color: $color-accent;
+        color: $color-black;
     }
 }
