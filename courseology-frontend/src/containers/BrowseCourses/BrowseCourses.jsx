@@ -60,7 +60,7 @@ const BrowseCourses = ({ user }) => {
             : null
           }
           <p>Page {page}</p>
-          {courses.length == 10 ? 
+          {courses.length === 10 ? 
             <PageButton onClick={changePage} value=">" />
             : null
           }

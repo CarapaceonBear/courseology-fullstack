@@ -1,1 +1,36 @@
 @use "../../assets/sass/variables" as *;
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.user-details {
+    background-color: $color-light;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-top: 2rem;
+}
+.password{
+    &__form {
+        display: flex;
+        flex-direction: column;
+        background-color: $color-light;
+        padding: 2rem;
+        border-radius: 1rem;
+        margin-top: 2rem;
+    }
+    &__button {
+        margin-top: 1rem;
+        height: 2rem;
+        border-radius: 5px;
+        background-color: $color-mid;
+        color: $color-white;
+        transition: all 0.2s;
+
+        &:hover {
+            background-color: $color-accent;
+            color: $color-black;
+        }
+    }
+}

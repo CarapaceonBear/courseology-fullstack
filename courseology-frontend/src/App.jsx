@@ -14,15 +14,9 @@ function App() {
 
   const [user, setUser] = useState(null);
 
-  const changeUser = async (id) => {
-    // console.log(id);
-    // const url = `http://localhost:8080/user/${id}`;  
-    // const response = await fetch(url);
-    // const fetchedUser = await response.json();
-    // console.log(fetchedUser);
-
-    // setUser(id);
-    console.log(id);
+  const changeUser = (id) => {
+    const loggedUser = Promise.resolve(id);
+    loggedUser.then((value) => {setUser(value); console.log(value);})
   }
 
   return (

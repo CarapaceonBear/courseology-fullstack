@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Navbar.scss";
 import LinkButton from "../LinkButton/LinkButton";
 
 const Navbar = ({ user }) => {
-
-  // const [admin, setAdmin] = useState(true);
 
   return (
     <div className="navbar">

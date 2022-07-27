@@ -44,6 +44,7 @@ const SignIn = ({changeUser}) => {
     const username = event.nativeEvent.srcElement[0].value;
     const password = event.nativeEvent.srcElement[1].value;
     const validLogin = checkLogin(username, password);
+    console.log(validLogin);
     if (validLogin !== null) {
       changeUser(validLogin)
     } else {
@@ -55,14 +56,21 @@ const SignIn = ({changeUser}) => {
     const url = `http://localhost:8080/username/${username}`;
     const response = await fetch(url);
     const result = await response.json().then(response => {
-      if (response.password == password) {
+      if (response.password === password) {
         return response.id;
       } else {
         return null;
       }});
-    console.log(result);
-    return result;
+    if (result) {
+      const url = `http://localhost:8080/user/${result}`;  
+      const response = await fetch(url);
+      const fetchedUser = await response.json();
+      return fetchedUser;
+    }
+    return null;
   }
+
+
 
   return (
     <div className="sign-in">
