@@ -6,7 +6,7 @@ import ScreenWipe from "../../components/ScreenWipe/ScreenWipe";
 import PageButton from "../../components/PageButton/PageButton";
 import SubjectFilter from "../../components/SubjectFilter/SubjectFilter";
 
-const BrowseCourses = () => {
+const BrowseCourses = ({ user }) => {
 
   const [courses, setCourses] = useState([]);
   const [page, setPage] = useState(1);
@@ -48,7 +48,7 @@ const BrowseCourses = () => {
 
   return (
     <div className="browse">
-      <Navbar />
+      <Navbar user={user} />
       <ScreenWipe />
       <div className="browse__container">
         <h1 className="browse__title">Our available courses</h1>

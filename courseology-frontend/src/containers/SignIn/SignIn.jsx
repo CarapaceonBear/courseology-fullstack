@@ -14,13 +14,15 @@ const SignIn = ({changeUser}) => {
       "email":email,
       "password":password
     }
-    if (! email.includes("@")) {
-      alert("Invalid email")
+    if (username.split("").size() > 1) {
+      alert("Username cannot have spaces");
+    } else if (! email.includes("@")) {
+      alert("Invalid email");
     } else if (username !== "" && email !== "" && password !== "") {
       sendRegisterRequest(submittedUser);
       event.target.reset();
     } else {
-      alert("Missing information")
+      alert("Missing information");
     }
   }
 
@@ -37,9 +39,29 @@ const SignIn = ({changeUser}) => {
     alert(message);
   }
 
-  const submitLogin = (event) => {
+  const submitLogin = async (event) => {
     event.preventDefault();
-    console.log(event);
+    const username = event.nativeEvent.srcElement[0].value;
+    const password = event.nativeEvent.srcElement[1].value;
+    const validLogin = checkLogin(username, password);
+    if (validLogin !== null) {
+      changeUser(validLogin)
+    } else {
+      alert("Incorrect username or password")
+    }
+  }
+
+  const checkLogin = async (username, password) => {
+    const url = `http://localhost:8080/username/${username}`;
+    const response = await fetch(url);
+    const result = await response.json().then(response => {
+      if (response.password == password) {
+        return response.id;
+      } else {
+        return null;
+      }});
+    console.log(result);
+    return result;
   }
 
   return (
@@ -59,10 +81,10 @@ const SignIn = ({changeUser}) => {
       <div className="login-box">
         <form className="form form--login" onSubmit={submitLogin}>
           <h2 className="form__title">Log in</h2>
-          <label htmlFor="login-email">Email address</label>
-          <input type="text" id="login-email" />
+          <label htmlFor="login-name">Username</label>
+          <input type="text" id="login-name" />
           <label htmlFor="login-password">Password</label>
-          <input type="text" id="login-password" />
+          <input type="password" id="login-password" />
           <input className="form__button" type="submit" id="login-button" value="Log in"/>
         </form>
       </div>
