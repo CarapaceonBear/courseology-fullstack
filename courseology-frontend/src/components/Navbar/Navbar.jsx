@@ -1,19 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Navbar.scss";
 import LinkButton from "../LinkButton/LinkButton";
-import { Link } from "react-router-dom";
 
-const Navbar = () => {
-
-  const [admin, setAdmin] = useState(true);
+const Navbar = ({ user }) => {
 
   return (
     <div className="navbar">
         <LinkButton link={"/"} text="Home" />
         <LinkButton link={"/browse"} text="Browse Courses" />
-        {useState ? 
+        {user.admin ? 
         <LinkButton link={"/admin"} text="Admin" /> :
-        <LinkButton link={"/profile"} text="Profile" />
+        <LinkButton link={"/profile/" + user.id} text="Profile" />
         }
     </div>
   )

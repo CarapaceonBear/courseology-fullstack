@@ -4,7 +4,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import ScreenWipe from "../../components/ScreenWipe/ScreenWipe";
 import { useParams } from "react-router-dom";
 
-const CourseOverview = () => {
+const CourseOverview = ({ user }) => {
 
   const { courseId } = useParams();
 
@@ -23,7 +23,7 @@ const CourseOverview = () => {
 
   return (
     <div className="course">
-      <Navbar />
+      <Navbar user={user} />
       <ScreenWipe />
       <div className="course-container">
         {courseData !== null ? 
@@ -40,8 +40,6 @@ const CourseOverview = () => {
           </div>
           : <p>Loading information</p>
         }
-
-
       </div>
     </div>
   )
