@@ -30,7 +30,7 @@ function App() {
           <Route path="/course/:courseId" element={<CourseOverview user={user} />} />
           <Route path="/login" element={<SignIn />} />
           <Route path="/profile/:userId" element={<UserProfile user={user} logOut={logOut} />} />
-          <Route path="/admin" element={<Admin user={user} />} />
+          <Route path="/admin" element={<Admin user={user} logOut={logOut} />} />
         </Routes>
       </Router>
     </div>
